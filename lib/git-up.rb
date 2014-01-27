@@ -94,6 +94,10 @@ BANNER
   def rebase_all_branches
     col_width = branches.map { |b| b.name.length }.max + 1
 
+    if branches.include? first_rebase_branch
+      branches.unshift(a.delete(first_rebase_branch))
+    end
+
     branches.each do |branch|
       remote = remote_map[branch.name]
 
@@ -305,6 +309,10 @@ EOS
     end
 
     config("bundler.check") == 'true' || ENV['GIT_UP_BUNDLER_CHECK'] == 'true'
+  end
+
+  def first_rebase_branch
+    config("bundler.first_rebase_branch") || ENV['GIT_UP_FIRST_REBASE_BRANCH']
   end
 
   def prune?

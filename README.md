@@ -60,6 +60,10 @@ Default: **false**. If **true**, git-up will check your app for any new bundled 
 
 Default: **false**. If **true**, and if `git-up.bundler.check` is also set to **true**, git-up will run `bundle install` for you if it finds missing gems.
 
+### git-up.bundler.first_rebase_branch [string]
+
+Default: **unset**. if set, git-up will run `git rebase` against the given branch name first, and then do the rest.
+
 ### git-up.fetch.prune [true|false]
 
 Default: **true**. Append the `--prune` flag when running `git fetch`, if your git version supports it (1.6.6 or greater), telling it to [remove any remote tracking branches which no longer exist on the remote](http://linux.die.net/man/1/git-fetch).
